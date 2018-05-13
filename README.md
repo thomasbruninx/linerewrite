@@ -34,5 +34,11 @@ $>rewrite
 ```
 Yes, it's that simple!
 
+### And how do I build and install this application?
+```
+$>build make install
+```
+Hence the makefile I provided you with, dummy!
+
 ## What are your future plans with this?
 I don't know yet, you tell me! If you've got ideas or suggestions on what I should do, hit me up. Also if you'd find a bug or any other issue with this let me know. You can do this via Github or send me an e-mail at: thomas-bruninx(at)telenet.be
