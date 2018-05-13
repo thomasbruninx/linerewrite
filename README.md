@@ -3,7 +3,7 @@ A simple line by line text editor
 
 ## What is it?
 LineReWrite is just a simple and small text editor which allows you to edit a text file line by line.
-It started out as a fun little coding excercise and it became an actual program.
+It started out as a fun little coding exercise and it became an actual program.
 
 ## Why would you make something like this?
 Just for fun and giggles! Isn't coding supposed to be like that?
