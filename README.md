@@ -22,37 +22,43 @@ The options you can use are B for Backup, I for Insert, M for Multiline, R for R
 ```
 $>rewrite filename.txt 0
 ```
+Easy right!
 
 ### Editing multiple lines starting at line 7
 ```
 $>rewrite filename.txt 7 m
 ```
-If you want to stop editing just press enter on an empty line. (BTW this also works in single line mode in case you changed your mind and you don't want to change the line
+If you want to stop editing just press enter on an empty line. (BTW this also works in single line mode in case you changed your mind and you don't want to change the line)
 
 ### Show the contents (starting at line 4) of the file before editing
 ```
 $>rewrite filename.txt 4 p
 ```
+Pro-tip: You can combine all these options together!
 
 ### Show the contents of my entire file without editing
 ```
 $>rewrite filename.txt 0 pn
 ```
+This is litteraly just what "cat" does.
 
 ### Make a backup of my file before I edit it
 ```
 $>rewrite filename.txt 5 b
 ```
+Cause I forgot to make an undo feature.
 
 ### I don't want to edit, I just want to remove line 14
 ```
 $>rewrite filename.txt 14 r
 ```
+There's a reason I mentioned the backup option first.
 
 ### Insert a new line before line 6
 ```
 $>rewrite filename.txt 6 i
 ```
+Yes it's all possible!
 
 ### Show the built-in help function
 ```
