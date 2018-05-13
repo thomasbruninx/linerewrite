@@ -12,6 +12,13 @@ Just for fun and giggles! Isn't coding supposed to be like that?
 It's easy! Just build and install the application and Bob is your uncle.
 Once it's installed use like the examples bellow:
 
+### Basic usage
+```
+$>rewrite [FILENAME] [LINE_NR] [OPTIONS]
+```
+The options you can use are B for Backup, I for Insert, M for Multiline, R for Remove, P for Print, N for No Change. For more information look at the examples bellow. Beware! LINE_NR starts at 0
+
+
 ### Editing the first line of a file
 ```
 $>rewrite filename.txt 0
@@ -26,6 +33,26 @@ If you want to stop editing just press enter on an empty line. (BTW this also wo
 ### Show the contents (starting at line 4) of the file before editing
 ```
 $>rewrite filename.txt 4 p
+```
+
+### Show the contents of my entire file without editing
+```
+$>rewrite filename.txt 0 pn
+```
+
+### Make a backup of my file before I edit it
+```
+$>rewrite filename.txt 5 b
+```
+
+### I don't want to edit, I just want to remove line 14
+```
+$>rewrite filename.txt 14 r
+```
+
+### Insert a new line before line 6
+```
+$>rewrite filename.txt 6 i
 ```
 
 ### Show the built-in help function
