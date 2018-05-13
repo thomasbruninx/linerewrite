@@ -10,7 +10,6 @@ Just for fun and giggles! Isn't coding supposed to be like that?
 
 ## How does it work?
 It's easy! Just build and install the application and Bob is your uncle.
-Once it's installed use like the examples bellow:
 
 ### Basic usage
 ```
@@ -18,7 +17,7 @@ $>rewrite [FILENAME] [LINE_NR] [OPTIONS]
 ```
 The options you can use are B for Backup, I for Insert, M for Multiline, R for Remove, P for Print, N for No Change. For more information look at the examples bellow. Beware! LINE_NR starts at 0
 
-
+## Examples
 ### Editing the first line of a file
 ```
 $>rewrite filename.txt 0
