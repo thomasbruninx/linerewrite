@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 	} else {
 		cout << "Usage: rewrite [filename] [line_nr] [options]" << endl
 		<< "Options: B = Backup, I = Insert, M = Multiline," << endl 
-		<< "         R = Remove, P = Print, N = No Change" << endl
+		<< "         R = Remove, P = Print, N = No Change," << endl
 		<< "         C = Create/Clear" << endl;
 		return -1;
 	}
@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
 					if (line_nr >= content.size()) {
 						content.push_back(temp_line);
 					} else {
-						// options = INSERT?
+						// Insert line or replace?
 						if (options & INSERT) content.insert(content.begin() + line_nr, temp_line);
 						else content.at(line_nr) = temp_line;
 					}
@@ -157,6 +157,6 @@ int main(int argc, char *argv[]) {
 		}
 		file_out.close();
 	}
-
+	
 	return 0;
 }
