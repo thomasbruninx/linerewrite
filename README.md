@@ -30,6 +30,12 @@ $>rewrite filename.txt 7 m
 ```
 If you want to stop editing just press enter on an empty line. (BTW this also works in single line mode in case you changed your mind and you don't want to change the line)
 
+### Creating a new file
+```
+$>rewrite filename.txt 0 c
+```
+Be careful, if the file already exists it will just overwrite it!
+
 ### Show the contents (starting at line 4) of the file before editing
 ```
 $>rewrite filename.txt 4 p
