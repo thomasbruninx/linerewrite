@@ -28,7 +28,8 @@ enum options_t {
 	MULTILINE	= 	0b00000100,
 	REMOVE 		= 	0b00001000,
 	PRINT 		= 	0b00010000,
-	NOCHANGE 	= 	0b00100000
+	NOCHANGE 	= 	0b00100000,
+	CREATE		= 	0b01000000
 };
 
 int main(int argc, char *argv[]) {
@@ -49,7 +50,8 @@ int main(int argc, char *argv[]) {
 	} else {
 		cout << "Usage: rewrite [filename] [line_nr] [options]" << endl
 		<< "Options: B = Backup, I = Insert, M = Multiline," << endl 
-		<< "         R = Remove, P = Print, N = No Change" << endl;
+		<< "         R = Remove, P = Print, N = No Change" << endl
+		<< "         C = Create/Clear" << endl;
 		return -1;
 	}
 
@@ -74,10 +76,17 @@ int main(int argc, char *argv[]) {
 					break;
 				case 'N':
 					options |= NOCHANGE;
+				case 'C':
+					options |= CREATE;
 				default:
 					break;
 			}
 		} 
+	}
+
+	if (options & CREATE) {
+		ofstream file_new(filename, ios::out);
+		file_new.close();
 	}
 
 	// If file doesn't exist or unable to open, exit program
