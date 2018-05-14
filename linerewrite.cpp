@@ -76,14 +76,17 @@ int main(int argc, char *argv[]) {
 					break;
 				case 'N':
 					options |= NOCHANGE;
+					break;
 				case 'C':
 					options |= CREATE;
+					break;
 				default:
 					break;
 			}
 		} 
 	}
 
+	// Create an empty file if necessary
 	if (options & CREATE) {
 		ofstream file_new(filename, ios::out);
 		file_new.close();
