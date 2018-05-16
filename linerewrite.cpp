@@ -20,6 +20,9 @@
 #include <fstream>
 #include <exception>
 
+#define REWRITE_MAJOR_VERSION_NUMBER 0
+#define REWRITE_MINOR_VERSION_NUMBER 4
+
 using namespace std;
 
 enum options_t {
@@ -29,7 +32,8 @@ enum options_t {
 	REMOVE 		= 	0b00001000,
 	PRINT 		= 	0b00010000,
 	NOCHANGE 	= 	0b00100000,
-	CREATE		= 	0b01000000
+	CREATE		= 	0b01000000,
+	LINECOUNT 	= 	0b10000000
 };
 
 int main(int argc, char *argv[]) {
@@ -48,10 +52,13 @@ int main(int argc, char *argv[]) {
 			return -1;
 		}
 	} else {
-		cout << "Usage: rewrite [filename] [line_nr] [options]" << endl
+		cout << "Rewrite v" << REWRITE_MAJOR_VERSION_NUMBER << '.' << REWRITE_MINOR_VERSION_NUMBER << " Copyright (C) 2018 Thomas Bruninx" << endl
+		<< "This program is free software distributed under the GPL3 License check the" << endl
+		<< "LICENSE file for more information" << endl << endl
+		<< "Usage: rewrite [filename] [line_nr] [options]" << endl
 		<< "Options: B = Backup, I = Insert, M = Multiline," << endl 
 		<< "         R = Remove, P = Print, N = No Change," << endl
-		<< "         C = Create/Clear" << endl;
+		<< "         C = Create/Clear, L = Linecount" << endl;
 		return -1;
 	}
 
@@ -79,6 +86,9 @@ int main(int argc, char *argv[]) {
 					break;
 				case 'C':
 					options |= CREATE;
+					break;
+				case 'L':
+					options |= LINECOUNT;
 					break;
 				default:
 					break;
@@ -114,7 +124,12 @@ int main(int argc, char *argv[]) {
 		file_out.close();
 	}
 
-	// Print out the file line by line if nevessary
+	// Print line count if necessary
+	if (options & LINECOUNT) {
+		cout << filename << ":linecount>" << content.size() << endl;
+	}
+
+	// Print out the file line by line if necessary
 	if (options & PRINT) {
 		for (int i = line_nr; i < content.size(); i++) {
 			cout << filename << ":" << i << ">" << content.at(i) << endl;
@@ -125,12 +140,9 @@ int main(int argc, char *argv[]) {
 	if (!(options & NOCHANGE)) {
 		// Remove line if necessary
 		if (options & REMOVE) {
-			if (line_nr < content.size()) {
-				content.erase(content.begin() + line_nr);
-			} else {
-				cerr << "Error: make sure line_nr is not higher than file line amount" << endl;
-				return -1;
-			}
+			do {
+				if (line_nr < content.size()) content.erase(content.begin() + line_nr);
+			} while (options & MULTILINE && line_nr < content.size());
 		} else {
 			// Let user edit requested line
 			do {
