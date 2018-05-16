@@ -66,6 +66,12 @@ $>rewrite filename.txt 6 i
 ```
 Yes it's all possible!
 
+### Get the number of lines in a file
+```
+$>rewrite filename.txt 0 ln
+```
+Pretty informative isn't it?
+
 ### Show the built-in help function
 ```
 $>rewrite
