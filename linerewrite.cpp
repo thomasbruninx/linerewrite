@@ -126,7 +126,7 @@ int main(int argc, char *argv[]) {
 
 	// Print line count if necessary
 	if (options & LINECOUNT) {
-		cout << filename << ":linecount>" << content.size() << endl;
+		cout << filename << ":linecount = " << content.size() << endl;
 	}
 
 	// Print out the file line by line if necessary
